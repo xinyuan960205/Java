@@ -13,40 +13,39 @@ import java.text.DecimalFormat;
  */
 public class Solution {
     public double findMedianSortedArrays() {
-        int[] nums1 = {1,2};
-        int[] nums2 = {3,4};
-        int lengthAll = nums1.length+nums2.length;
+        int[] nums1 = {1, 2};
+        int[] nums2 = {3, 4};
+        int lengthAll = nums1.length + nums2.length;
         int[] nums = new int[lengthAll];
-        int No1=0;
-        int No2=0;
-        int nums1No=0;
-        int nums2No=0;
-        if(lengthAll%2 != 0){
-            No1 = lengthAll/2;
-            No2 = lengthAll/2;
-        }else{
-            No1 = (lengthAll/2)-1;
-            No2 = lengthAll/2;
+        int No1 = 0;
+        int No2 = 0;
+        int nums1No = 0;
+        int nums2No = 0;
+        if (lengthAll % 2 != 0) {
+            No1 = lengthAll / 2;
+            No2 = lengthAll / 2;
+        } else {
+            No1 = (lengthAll / 2) - 1;
+            No2 = lengthAll / 2;
         }
-        for(int i=0;i<No2+1;i++){
-            if(nums1No >= nums1.length){
-                nums[i]=nums2[nums2No];
+        for (int i = 0; i < No2 + 1; i++) {
+            if (nums1No >= nums1.length) {
+                nums[i] = nums2[nums2No];
                 nums2No++;
-            }else if(nums2No >= nums2.length){
-                nums[i]=nums1[nums1No];
+            } else if (nums2No >= nums2.length) {
+                nums[i] = nums1[nums1No];
                 nums1No++;
-            }
-            else{
-                if(nums1[nums1No]<=nums2[nums2No]){
-                    nums[i]=nums1[nums1No];
+            } else {
+                if (nums1[nums1No] <= nums2[nums2No]) {
+                    nums[i] = nums1[nums1No];
                     nums1No++;
-                }else{
-                    nums[i]=nums2[nums2No];
+                } else {
+                    nums[i] = nums2[nums2No];
                     nums2No++;
                 }
             }
         }
-        double middleNum = ((double) nums[No1] + nums[No2])/2;
+        double middleNum = ((double) nums[No1] + nums[No2]) / 2;
         return middleNum;
     }
 }
